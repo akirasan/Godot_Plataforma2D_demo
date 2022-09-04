@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Rocky Roads/background1.png" type="Texture" id=2]
+[ext_resource path="res://Rocky Roads/background3.png" type="Texture" id=3]
+[ext_resource path="res://recursos/sky blue.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Menu.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://recursos/fonts/LuckiestGuy-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 60
+font_data = SubResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.419608, 0.458824, 0.643137, 1 )
+shadow_color = Color( 0.72549, 0.101961, 0.101961, 0.6 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.419608, 0.458824, 0.643137, 1 )
+
+[node name="Control" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -403.5
+margin_top = -130.0
+margin_right = 403.5
+margin_bottom = 130.0
+script = ExtResource( 5 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -171.0
+margin_top = -93.5
+margin_right = 171.0
+margin_bottom = 93.5
+
+[node name="Iniciar" type="Button" parent="VBoxContainer"]
+margin_right = 361.0
+margin_bottom = 67.0
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/focus = SubResource( 1 )
+text = "Start game"
+
+[node name="Salir" type="Button" parent="VBoxContainer"]
+margin_top = 71.0
+margin_right = 361.0
+margin_bottom = 138.0
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/focus = SubResource( 1 )
+text = "Quit"
+
+[node name="Coin" parent="." instance=ExtResource( 1 )]
+position = Vector2( 411.5, -8.99997 )
+scale = Vector2( 5, 5 )
+
+[node name="Background1" type="Sprite" parent="."]
+position = Vector2( 419.5, 257 )
+scale = Vector2( 3.74219, 2.42969 )
+texture = ExtResource( 2 )
+
+[node name="Background3" type="Sprite" parent="."]
+position = Vector2( 414.5, 289 )
+scale = Vector2( 3.74219, 2.42969 )
+texture = ExtResource( 3 )
+
+[node name="SkyBlue" type="Sprite" parent="."]
+position = Vector2( 430.5, 94 )
+scale = Vector2( 4.07143, 2.88144 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[connection signal="pressed" from="VBoxContainer/Iniciar" to="." method="_on_Iniciar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_Salir_pressed"]
